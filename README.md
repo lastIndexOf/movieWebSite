@@ -6,13 +6,16 @@ a simple movie website(include Front-end and back-end)
 
 `cd somewhere/
 `
+
 `git clone https://github.com/lastIndexOf/movieWebSite.git
 `
 
 `cd movieWebSite
 `
+
 ` npm i
 `
+
 ` bower i
 `
 
