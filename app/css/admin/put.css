@@ -1,0 +1,11 @@
+* {
+	font-family: '微软雅黑';
+}
+body {
+	padding-top: 55px;
+}
+@media(max-width: 768px) {
+	#canvas {
+		display: none;
+	}
+}

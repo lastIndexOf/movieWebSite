@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Vue.js</title>
+	<link rel="stylesheet" href="../css/personal.css">
+	<style>
+		
+		.router-link-active {
+			border: 1px solid red;
+		}
+		.view-leave-active
+		,.cls {
+			transition: all 2.5s;
+			position: absolute;
+		}
+		.view-enter
+		,.view-leave-active  {
+			opacity: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<p>
+			<router-link to="/user/foo">Go to foo</router-link>
+			<router-link to="/user/bar/movie">Go to bar</router-link>
+			<button type="button" @click="router.push('/user/foo?search=111')">to foo</button>
+		</p>
+		<transition 
+			name="view"
+			:enter-active-class="'cls'">	
+			<router-view></router-view>
+		</transition>
+	</div>
+</body>
+<script src="../vue/dist/vue.min.js"></script>
+<script src="../vue-router/dist/vue-router.min.js"></script>
+<script src="../moment/moment.js"></script>
+<script src="../js/superagent.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+<script src="https://unpkg.com/tween.js@16.3.4"></script>
+<script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+<script>
+	const Home = { 
+			template: `<div>home</div>`,
+			beforeRouteEnter(to, from, next) {
+				console.log('444')
+
+				next()
+			},
+			beforeRouteLeave(to, from, next) {
+				console.log('333')
+				console.log(this)
+				next()
+			}
+	 	}
+			, Movie = { template: `<div><h1>fair</h1><p>{{ $route.params }}</p></div>` }
+			, User = { 
+					template: `
+					<div :key="$route.params.id" style="border:1px solid blue;width:100%">
+						<p>{{ $route.params }} + {{ $route.query }}</p>
+						<p>{{ name }}</p>
+						<router-view></router-view>
+					</div>`,
+					data() {
+						return {
+							name: '1111'
+						}
+					},
+					watch: {
+						'$route'(to, from) {
+							superagent
+							.post('/api/k1')
+							.send({ id: to.params.id })
+							.end((err, res) => {
+								if (err)
+									console.log(err)
+								Object.assign(this, res.body)
+							})
+						}
+					} 
+				}
+			,	routes = [
+				{ path: '/user/:id', name: 'home', component: User,
+					children: [
+						{ path: '', component: Home, meta: { isLogin: true } },
+						{ path: 'movie', component: Movie,
+							beforeEnter(to, from, next) {
+								console.log('111')
+								next()
+							} }] },
+				{ path: '/user/:id/send/:name', component: User}]
+			, router = new VueRouter({ routes })
+
+
+	const app = new Vue({
+					router,
+					data() {
+						return {
+							fo: 'foo',
+							to: 1
+						}
+					},
+					methods: {
+						changed() {
+							console.log('11')
+						}
+					},
+					watch: {
+						'to'() {
+							this.changed()
+						}
+					}
+				}).$mount('#app')
+</script>
+</html>

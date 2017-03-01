@@ -1,0 +1,15 @@
+.background {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url('../imgs/log.jpg');
+	background-size: cover;
+	opacity: 0.5;
+}
+.sign {
+	margin-top: 15%;
+}
+#canvas {
+	z-index: 1031;
+}

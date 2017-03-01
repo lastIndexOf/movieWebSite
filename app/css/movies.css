@@ -1,0 +1,19 @@
+* {
+	font-family: '微软雅黑';
+}
+body {
+	padding-top: 55px;
+}
+.caption > h3 {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	
+}
+.thumbnail > a > img {
+	width: 100%;
+	max-height: 170px;
+}
+@media(max-width: 768px) {
+	
+}

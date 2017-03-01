@@ -1,0 +1,77 @@
+doctype 5
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,, user-scalable=no")
+		title #{title}
+		include ./includes/header
+		link(href="../../css/movie.css",rel="stylesheet")
+	body
+		include ./includes/common
+		h2 欢迎你的到来,&nbsp;&nbsp; #{user.nickname}
+			small  ---#{type}
+		hr
+		.container
+			.row 
+				.col-lg-7
+					embed(src=movie.url, allowFullScreen="true", quality="high", width="720px", height="600px", align="middle", type="application/x-shockwave-flash")
+					.panel.panel-default
+						.panel-heading 
+							h4 评论
+						.panel-body
+							ul.media-list
+								if comments.length
+									each comment in comments
+										li.media
+											a.pull-left
+												img.media-object(src="../imgs/tourist.jpg")
+											.media-body
+												.media-heading
+													h4
+														a.a-comment(href="#comments", data-cid=comment._id, data-tid=comment.from._id) #{ comment.from.nickname }
+														small  | #{ moment(comment.meta.createAt).format('YY/MM/DD HH:mm')}
+												.media-content
+													| &nbsp;&nbsp;&nbsp;&nbsp;#{ comment.content }
+													if comment.reply.length
+														each reply in comment.reply
+															.media(style="margin-top:10px;")
+																a.pull-left
+																	img.media-object(src="../imgs/tourist.jpg")
+																.media-body
+																	.media-heading
+																		h4
+																			a.a-comment(href="#comments", data-cid=comment._id, data-tid=reply.from._id) #{ reply.from.nickname }
+																			| &nbsp;&nbsp;to&nbsp;&nbsp;
+																			a.a-comment(href="#comments", data-cid=comment._id, data-tid=reply.to._id) #{ reply.to.nickname }
+																			small  | #{ moment(reply.meta.createAt).format('YY/MM/DD HH:mm')}
+																	.media-content
+																		| &nbsp;&nbsp;&nbsp;&nbsp;#{ reply.content }
+										hr
+								else
+									li.text-center
+										h4 暂无评论..
+						.panel-footer
+							#comments
+								form#movie-comment(action="/comment/movie", method="POST")
+									input(type="hidden", name="comment[movie]", value=movie._id)
+									input(type="hidden", name="comment[from]", value=user._id)
+									.from-group
+										textarea.form-control.content(rows="4", name="comment[content]")
+									br
+									.form-group.text-right
+										button.btn.btn-primary(type="submit") 提交
+				.col-lg-5
+					dl.dl-horizontal
+						dt 电影名
+						dd #{ movie.title }
+						dt 导演
+						dd #{ movie.doctor }
+						dt 国家
+						dd #{ movie.country }
+						dt 上映年份
+						dd #{ movie.year }
+						dt 语言
+						dd #{ movie.language }
+						dt 简介
+						dd #{ movie.summary }
+		script(src="../js/movie.js")

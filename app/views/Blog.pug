@@ -1,0 +1,52 @@
+doctype 5
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
+		link(rel="stylesheet" href="css/Blog.css")
+		link(rel="stylesheet" href="css/icon/iconfont.css")
+		script(src="../../jquery/dist/jquery.min.js")
+		script(src="../../moment/moment.js")
+		script(src="js/Blog.js")
+	body
+		nav.nav
+			canvas#canvas
+			header.nav-header
+				.nav-content
+					h1 WELCOME!
+					p Here is me:
+					p I am FanKai Zheng
+					p Enrolled in Harbin Institute of Technology
+					a(href="/")
+						img(src="imgs/face.jpg")
+					time.nav-time #{ moment(new Date()).format('MM/DD hh:mm:ss') }
+				.nav-heading
+			section.nav-body
+				.nav-personal
+					a(href="https://github.com/lastIndexOf"): i.iconfont.icon-github
+					a(href="http://weibo.com/u/2652496913"): i.iconfont.icon-weibo1
+					a(href="#"): i.iconfont.icon-QQ
+					
+				.nav-intruduce
+					p I am a web-maker.
+					p I am a student
+					p And I am an engineer.
+					p I love Python, JavaScript, C++,
+					p oh, And the best language in the world
+					p(style="text-align:right;padding-right:25px;") ----- PHP
+			footer.nav-footer
+				a(href="javascript:void(0)").btn Aaaa
+				a(href="javascript:void(0)").btn Bbbb
+				p by zfk @kgaikj2cu@icloud.com
+		div.main
+			section
+				h1.content-header &nbsp;&nbsp;&nbsp;&nbsp;Movie Website |
+					small  This is a simple use of watercress API to add movie data from the background of the site, and provide registration and comment features, the latter will develop more..
+				figure.details
+					time 2017
+					a(href="/movies"): .img(style="background-image:url(imgs/Blog/Movie.png)")
+					figcaption
+						p.last-p this is my first website..
+			
+
+			

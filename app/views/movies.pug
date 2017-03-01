@@ -1,0 +1,24 @@
+doctype 5
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no")
+		title #{title}
+		include ./includes/header
+		link(href="../../css/movies.css",rel="stylesheet")
+	body
+		include ./includes/common
+		h2 欢迎你的到来,&nbsp;&nbsp; #{user.nickname}
+			small  ---#{type}
+		hr
+		.container
+			.row
+				each item in movies
+					.col-md-2.col-xs-6
+						.thumbnail(title=item.title)
+							a(href="/movie/"+item._id)
+								img(src=item.poster, alt=item.title)
+							.caption
+								h3 #{item.title}
+								p: a.btn.btn-primary(href="/movie/"+item._id) 观看预告片
+

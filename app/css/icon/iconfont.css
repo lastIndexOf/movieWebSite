@@ -1,0 +1,41 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1485437628708'); /* IE9*/
+  src: url('iconfont.eot?t=1485437628708#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1485437628708') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1485437628708') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1485437628708#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-QQ:before { content: "\e607"; }
+
+.icon-weibo:before { content: "\e600"; }
+
+.icon-weibo1:before { content: "\e619"; }
+
+.icon-weibo2:before { content: "\e601"; }
+
+.icon-3:before { content: "\e617"; }
+
+.icon-github:before { content: "\e735"; }
+
+/* .icon-qq:before { content: "\e67c"; } */
+
+.icon-github1:before { content: "\e66f"; }
+
+.icon-github2:before { content: "\eaf6"; }
+
+.icon-qq1:before { content: "\e616"; }
+
+.icon-github3:before { content: "\e6c7"; }
+
+.icon-github4:before { content: "\e618"; }
+

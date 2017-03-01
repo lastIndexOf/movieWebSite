@@ -1,0 +1,62 @@
+doctype 5
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,, user-scalable=no")
+		title #{title}
+		include ../includes/header
+		link(href="../../css/admin/put.css",rel="stylesheet")
+		link(href="../../css/admin/admincommon.css",rel="stylesheet")
+	body
+		canvas#canvas(style="position:fixed;bottom:0;left:0;") 你的浏览器不支持canvas
+		.navbar.navbar-fixed-top.navbar-inverse
+			.navbar-header
+				button.btn.btn-default.navbar-toggle(type="button", data-toggle="collapse", data-target="#put-mobile")
+					span.sr-only
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand 后台管理页
+			.collapse.navbar-collapse#put-mobile
+				ul.nav.navbar-nav
+					li: a(href="/admin/put") 电影
+					li.active: a(href="/admin/users") 用户
+					li: a 待定
+				form.navbar-form.navbar-left
+					.form-group
+						input.form-control(type="search")
+						button.btn.btn-default(type="button") 搜索
+				ul.nav.navbar-nav.navbar-right
+					li: a 欢迎你 , &nbsp;&nbsp;#{name}
+					li: a(href="/signout") 退出
+					li.navbar-text &nbsp;&nbsp;&nbsp;
+		.container(style="margin-top:50px")
+			.row
+				.col-md-2
+					ul.nav.nav-pills.nav-stacked
+						li.active: a(href="/admin/users") 管理用户列表
+						li: a 待定
+						li: a 待定
+						li: a 待定
+				.col-md-10
+					table.table.table-bordered.table.hover
+						thead
+							tr
+								th #
+								th 用户名
+								th 时间
+								th 查看
+								th 编辑
+								th 删除
+						tbody
+							each item,index in users
+								tr(class="item-id-"+item._id)
+									th= index
+									td #{item.nickname}
+									td #{moment(item.meta.createAt).format('MM/DD/YYYY')}
+									td: a(target="_blank", href="/movie/"+item._id) 查看
+									td: a(href="/admin/add/"+item._id) 编辑
+									td
+										button.btn.btn-danger.remove-item(type="button", data-id=item._id) 删除
+										
+		script(src="../../js/users.js")

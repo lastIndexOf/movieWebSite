@@ -1,0 +1,34 @@
+.navbar {
+	z-index: 1301;
+}
+#canvas {
+	position:fixed;
+	bottom:0;
+	left:0;
+}
+img {
+	transition: all .3s ease;
+}
+img:hover {
+	transform: scale(1.2);
+	-webkit-transform: scale(1.2);
+	-moz-transform: scale(1.2);
+	-o-transform: scale(1.2);
+}
+
+@media(max-width:768px) {
+	.navbar-form {
+		display: none;
+	}
+	.navbar-text.updown {
+		display: none;
+	}
+	#canvas {
+		height: 80px;
+		top: 0px;
+		left: 50%;
+		-webkit-transform: translate(-50%, -15%);
+		-moz-transform: translate(-50%, -15%);
+		z-index: 1302;
+	}
+}

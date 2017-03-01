@@ -1,0 +1,12 @@
+* {
+	font-family: '微软雅黑';
+}
+body {
+	padding-top: 55px;
+}
+.thumbnail > img {
+	height: 350px;
+} 
+@media(max-width: 768px) {
+	
+}

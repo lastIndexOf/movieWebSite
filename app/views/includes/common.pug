@@ -1,0 +1,40 @@
+canvas#canvas 你的浏览器不支持canvas
+.navbar.navbar-inverse.navbar-fixed-top
+	.navbar-header
+		button.btn-btn-default.navbar-toggle(type="button", data-toggle="collapse", data-target="#web-navbar")
+			span.sr-only
+			span.icon-bar
+			span.icon-bar
+			span.icon-bar
+		a.navbar-brand: span.glyphicon.glyphicon-cloud
+	.collapse.navbar-collapse#web-navbar
+		ul.nav.navbar-nav
+			li.active: a(href="/") 首页
+			li: a(href="/movies") 电影
+			li: a(href="/blog") 主人的博客
+			li.dropdown
+				a.dropdown-toggle(data-toggle="dropdown", href="javasript:;") 来点休闲吧~
+					span.caret
+				ul.dropdown-menu
+					li.dropdown-header Games
+					li.disabled: a 2048
+					li.divider
+					li.dropdown-header 来点特效吧
+					li: a(href="/css3") 翻滚吧
+					li.divider
+					li.dropdown-header 手机专享
+					li: a(href="/sell") 饿了么外卖
+		form.navbar-form.navbar-left
+			.form-group
+				input.form-control(type="search", placeholder="请输入您想搜索的内容")
+				button.btn.btn-default 搜索
+		ul.nav.navbar-nav.navbar-right
+			if user._id
+				li: a 欢迎你 , &nbsp;&nbsp;#{user.nickname}
+				li: a(href="/signout") 退出
+				li.navbar-text &nbsp;&nbsp;&nbsp;
+			else
+				li: a(href="/signin") 登陆
+				li.navbar-text.updown(style="padding:0;margin-left:0;margin-right:0") |
+				li: a(href="/signup") 注册
+				li.navbar-text &nbsp;&nbsp;&nbsp;

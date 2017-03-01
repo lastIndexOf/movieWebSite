@@ -1,0 +1,79 @@
+doctype 5
+html
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1,, user-scalable=no")
+		title #{title}
+		include ../includes/header
+		link(href="../../css/admin/put.css",rel="stylesheet")
+		link(href="../../css/admin/admincommon.css",rel="stylesheet")
+	body
+		canvas#canvas(style="position:fixed;bottom:0;left:0;") 你的浏览器不支持canvas
+		.navbar.navbar-fixed-top.navbar-inverse
+			.navbar-header
+				button.btn.btn-default.navbar-toggle(type="button", data-toggle="collapse", data-target="#put-mobile")
+					span.sr-only
+					span.icon-bar
+					span.icon-bar
+					span.icon-bar
+				a.navbar-brand 后台管理页
+			.collapse.navbar-collapse#put-mobile
+				ul.nav.navbar-nav
+					li.active: a(href="/admin/put") 电影
+					li: a(href="/admin/users") 用户
+					li: a 待定
+				form.navbar-form.navbar-left
+					.form-group
+						input.form-control(type="search")
+						button.btn.btn-default(type="button") 搜索
+				ul.nav.navbar-nav.navbar-right
+					li: a 欢迎你 , &nbsp;&nbsp;#{name}
+					li: a(href="/signout") 退出
+					li.navbar-text &nbsp;&nbsp;&nbsp;
+		.container(style="margin-top:50px")
+			.row
+				.col-md-2
+					ul.nav.nav-pills.nav-stacked
+						li: a(href="/admin/put") 管理电影列表
+						li.active: a(href="/admin/add/new") 录入新电影
+						li: a 待定
+						li: a 待定
+				.col-md-6
+					form.form-horizontal(method="POST", action="/admin/movie/new")
+						input(type="hidden", name="movie[_id]", value=movie._id)
+						.form-group
+							label.control-label.col-md-4 电影名
+							.col-md-6
+								input.form-control(type="text", name="movie[title]", value=movie.title)
+						.form-group
+							label.control-label.col-md-4 导演
+							.col-md-6
+								input.form-control(type="text", name="movie[doctor]", value=movie.doctor)
+						.form-group
+							label.control-label.col-md-4 国家
+							.col-md-6
+								input.form-control(type="text", name="movie[country]", value=movie.country)
+						.form-group
+							label.control-label.col-md-4 上映年份
+							.col-md-6
+								input.form-control(type="text", name="movie[year]", value=movie.year)
+						.form-group
+							label.control-label.col-md-4 海报
+							.col-md-6
+								input.form-control(type="text", name="movie[poster]", value=movie.poster)
+						.form-group
+							label.control-label.col-md-4 语言
+							.col-md-6
+								input.form-control(type="text", name="movie[language]", value=movie.language)
+						.form-group
+							label.control-label.col-md-4 简介
+							.col-md-6
+								input.form-control(type="text", name="movie[summary]", value=movie.summary)
+						.form-group
+							label.control-label.col-md-4 URL
+							.col-md-8
+								input.form-control(type="text", name="movie[url]", value=movie.url)
+						.text-center
+							button.btn.btn-danger(type="reset") 复原
+							| &nbsp;&nbsp; 
+							button.btn.btn-primary(type="submit") 确定
