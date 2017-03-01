@@ -4,12 +4,12 @@ a simple movie website(include Front-end and back-end)
 
 ##use
 
-`cd somewhere/
- git clone https://github.com/lastIndexOf/movieWebSite.git
+`cd somewhere/`
+`git clone https://github.com/lastIndexOf/movieWebSite.git`
 
- cd movieWebSite
- npm i
- bower i`
+`cd movieWebSite`
+` npm i`
+` bower i`
 
 then
 
